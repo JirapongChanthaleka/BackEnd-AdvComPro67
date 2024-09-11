@@ -3,16 +3,17 @@
 // Create a Bood.sqlite file in Database folder
 // Runt this file with node CRUDBookSQLite.js
 // Test with Postman
-require("dotenv").config();
 const express = require('express');
-const sqlite3 = require('sqlite3');
+const Sequelize = require('sequelize');
 const app = express();
+// parse incoming requests
+app.use(express.json());
 
 //conncect to the database
-const db = new sqlite3.Database('./Database/Book.sqlite');
+const dbUrl = 'postgres://webadmin:GELyme61521@node65724-khao-app.proen.app.ruk-com.cloud:11481/Books'
 
 //parse incoming requests
-app.use(express.json());
+const sequelize = new Sequelize(dbUrl);
 
 // create books table if it doesn't exist
 db.run(`CREATE TABLE IF NOT EXISTS books (
