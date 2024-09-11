@@ -3,17 +3,18 @@
 // Create a Bood.sqlite file in Database folder
 // Runt this file with node CRUDBookSQLite.js
 // Test with Postman
-const express = require('express');
-const Sequelize = require('sequelize');
-const app = express();
-// parse incoming requests
-app.use(express.json());
+const express = require("express");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 
-//conncect to the database
-const dbUrl = 'postgres://webadmin:GELyme61521@node65724-khao-app.proen.app.ruk-com.cloud:11481/Books'
-
-//parse incoming requests
-const sequelize = new Sequelize(dbUrl);
+// Database connection
+mongoose.connect(
+    "mongodb://admin:KMAfqz97888@node65725-khao-app.proen.app.ruk-com.cloud:11565",
+    {
+        useNewUrlParser : true,
+        useUnifiedTopology : true,
+    }
+);
 
 // create books table if it doesn't exist
 db.run(`CREATE TABLE IF NOT EXISTS books (
